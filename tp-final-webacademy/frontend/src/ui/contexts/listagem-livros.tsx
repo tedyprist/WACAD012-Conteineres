@@ -61,8 +61,15 @@ const ListagemLivrosProvider: FC = (): JSX.Element => {
             setLivros(livrosBuscados);
         }catch(e: any){
             const erro = e as AxiosError;
+            
+            let mensagem = "Falha ao tentar buscar livros.";
+            if (erro.response && erro.response.data && (erro.response.data as ErroApiDTO).mensagem) {
+                mensagem += ` ${(erro.response.data as ErroApiDTO).mensagem}`;
+            } else if (erro.message) {
+                mensagem += ` ${erro.message}`;
+            }            
             adicionarAlerta({
-                textoAlerta: `Falha ao tentar buscar livros: ${(erro.response.data as ErroApiDTO).mensagem}`,
+                textoAlerta: mensagem,
                 tipoAlerta: "warning"
             });
         }

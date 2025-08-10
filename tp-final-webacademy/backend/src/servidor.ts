@@ -14,7 +14,7 @@ import { createServer, Server } from "node:http";
  */
 const iniciarAplicacao = async (): Promise<void> => {
     const logger: Logger = Logger.pegarInstancia();
-    const porta: number = (process.env.PORTA || 3000) as number;
+    const porta: number = (process.env.PORTA || 4444) as number;
     const servidor: Server = createServer(app);
 
     try{

@@ -8,6 +8,8 @@ import express from "express";
 
 const app = express();
 
+
+
 // Configurando o middleware de formatação
 // de entradas JSON, no formato 'application/json'...
 app.use(express.json());
